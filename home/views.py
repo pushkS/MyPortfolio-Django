@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from home.models import Contact
+from django.core.mail import send_mail
+
 
 # Create your views here.
 def index(request):
@@ -24,6 +26,20 @@ def contact(request):
         email=request.POST['email']
         subject=request.POST['subject']
         message=request.POST['message']
+
+        sub = "Name: " + name + "\n" + "Email: " + email + "\n\n\n" + " Message: " + message
+
+        #send mail
+
+        send_mail(
+           subject,#suject 
+           sub,#msg
+           email, #from 
+           ['pushks7777@gmail.com'], #to
+
+        )
+
+
         print(name, email , subject , message )
         contact = Contact(name=name, email=email, subject=subject, message=message)
         contact.save()
