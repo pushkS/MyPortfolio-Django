@@ -10,48 +10,32 @@
           <p>Following Are My Projects Below...</p>
         </div>
         <ol>
-          <li>PIMO</li>
-          <p>A smart device for vehicle working on raspberry pie 3, with navigation system and vehicle tracking for bikes and scooters</p>
-          <li>Amazon-Web-Scraping</li>
-          <p>It is software in which you want to insert URL of Amazon Product with URL you have to add two more details like your E-mail address & Price of the product which should be less. When product prices fall down
-      then it will compare your Before Entered Price with Current Product price if it less than Before Entered
-      Price Then it will send you an email on the given Receiver Email address.</p>
-
+        {%for p in proj%}
+          <li> {{p.title}}</li>
+          <p> {{p.content}}</p>
+        {% endfor %}
         </ol>
+        
+<div class="my-5">
+  <h3><center>For the source code of the PROJECTS click Name below mentioned in the boxes...</center></h3>
+</div>
 
 <div class="container">
   <div class="row">
-
-    <div class="col-lg">
+{%for p in proj%}
+    <div class="col-lg-6">
       <div class="count-box">
         <i class="icofont-simple-smile"></i>
-        <span><a href="https://github.com/pushkS/Pi-Mo">PIMO</a></span>
+        <span><a href="{{p.link}}"target="blank">{{p.title}}</a></span>
         <p>2017-2018</p>
         <!-- <div class="caption">
           <p>A smart device for vehicle working on raspberry pie 3, with navigation system and vehicle tracking for bikes and scooters</p>
         </div> -->
       </div>
     </div>
-
-    <div class="col-lg">
-      <div class="count-box">
-        <i class="icofont-simple-smile"></i>
-        <span><a href="https://github.com/pushkS/Amazon-Web-Scraping">Amazon-Web-Scraping</a></span>
-        <p>2019</p>
-        <!-- <div class="caption">
-          <p>It is software in which you want to insert URL of Amazon Product with URL you have to add two more details like your E-mail address & Price of the product which should be less. When product prices fall down
-then it will compare your Before Entered Price with Current Product price if it less than Before Entered
-Price Then it will send you an email on the given Receiver Email address.</p>
-        </div> -->
-      </div>
-    </div>
-</div>
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End Facts Section -->
+  {% endfor %}
+  </div>
+ </div> 
+</section><!-- End Facts Section -->
 
 {%endblock body%}

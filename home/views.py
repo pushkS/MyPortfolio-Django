@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from home.models import Contact
 from django.core.mail import send_mail
+from home.models import Project
 
 
 # Create your views here.
@@ -11,7 +12,9 @@ def about(request):
     return render(request,'about.html')
 
 def projects(request):
-    return render(request,'projects.html')
+    proj = Project.objects.all()
+    context = {'proj':proj}
+    return render(request,'projects.html', context)
 
 
 def resume(request):
@@ -27,7 +30,7 @@ def contact(request):
         subject=request.POST['subject']
         message=request.POST['message']
 
-        sub = "Name: " + name + "\n" + "Email: " + email + "\n\n\n" + " Message: " + message
+        sub = "Name: " + name + "\n" + "Email: " + email + "\n\n\n" + "Message: " + message
 
         #send mail
 
@@ -40,8 +43,9 @@ def contact(request):
         )
 
 
-        print(name, email , subject , message )
+        # print(name, email , subject , message )
         contact = Contact(name=name, email=email, subject=subject, message=message)
         contact.save()
-        print("the db is updated")
-    return render(request,'contact.html')
+        # print("the db is updated")
+        name = asd 
+    return render(request,'contact.html',{'name': asd})
