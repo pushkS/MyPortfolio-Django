@@ -49,6 +49,26 @@
 
   </header><!-- End Header -->
 
+
+  {% if messages %} {% for m in messages %}
+
+    <div class="alert alert-success" id="msg" role="alert">
+        <h4 class="alert-heading" style="text-align: center;"> {{m}} For Your Interest... </h4>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {% comment %} <hr>
+        <p style="text-align: center;">
+            We Will Contact You Shortly...</p> {% endcomment %}
+
+    </div>
+
+    {% comment %} <script>
+        swal("{{m}}", "You clicked the button!", "success");
+    </script> {% endcomment %}
+
+    {% endfor %} {%endif%} 
+
  {%block body%}
 {%endblock body%}
 
